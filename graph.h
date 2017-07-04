@@ -3,10 +3,11 @@
 
 #include <vector>
 #include <list>
+#include <set>
 #include "vertex.h"
 #include "pair.h"
 
-template <class T>
+class VertexInfo;
 class Graph
 {
 public:
@@ -23,17 +24,17 @@ public:
 		}
 	
 	}
-	Graph(const Graph <T> & rhs) throw (const char *)
+	Graph(const Graph & rhs) throw (const char *)
 	{
 		this->numVertices = rhs.numVertices;
 	}
 
 	~Graph()
 	{
-		
+		numVertices = 0;
 	}
 
-	Graph <K, V> & operator = (const Graph <T> & rhs)
+	Graph & operator = (const Graph & rhs)
 	{
 		this->numVertices = rhs.numVertices;
 		this->v = rhs.v;
@@ -41,22 +42,22 @@ public:
 	}
 
 	// std container interfaces
-	int size() { return bst.size(); }
-	void clear() { bst.clear(); }
+	int size() { return numVertices; }
+	void clear() { numVertices = 0; }
 
 	// map specific interfaces
 	bool isEdge() {}
-	Pair findEdges(Vertex & vertex) {}
-	std::vector findPath(Vertex & start, Vertex & end) {} // returns the shortest path between "start" and "end"
+	Pair<Vertex,Vertex> findEdges(Vertex & vertex) {}
+	std::vector<Vertex> findPath(Vertex & start, Vertex & end) {} // returns the shortest path between "start" and "end"
 	void add(Vertex & one, Vertex & two) {} // two vertices representing new edge
-	void add(Vertex & one, Set & two) {} // two vertices and a set of vertices
+	void add(Vertex & one, std::set<Vertex> & two) {} // two vertices and a set of vertices
 	
 private:
 	int numVertices;
 	class VertexInfo //stores the vertex name and the adjacent vertices
 	{
 	public:
-		T data;
+		Vertex data;
 		std::list <int> adjacencyList;
 	};
 	std::vector <VertexInfo> v;
