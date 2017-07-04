@@ -15,18 +15,33 @@ public:
 	// No default constructor
 	Graph(int numVertices) throw (const char *) :numVertices(0)
 	{
-
+		this->numVertices = numVertices;
 		if (numVertices <= 0)
 			return;
 		else
 		{
-
+			try
+			{
+				v = new vector<VertexInfo>(numVertices);
+			}
+			catch (std::bad_alloc)
+			{
+				throw "ERROR: Unable to allocate memory for the graph.";
+			}
 		}
 	
 	}
 	Graph(const Graph & rhs) throw (const char *)
 	{
 		this->numVertices = rhs.numVertices;
+		try
+		{
+			this->v = rhs.v;
+		}
+		catch (std::bad_alloc)
+		{
+			throw "ERROR: Unable to allocate memory for the graph.";
+		}
 	}
 
 	~Graph()
@@ -60,6 +75,6 @@ private:
 		Vertex data;
 		std::list <int> adjacencyList;
 	};
-	std::vector <VertexInfo> v;
+	std::vector <VertexInfo> * v;
 };
 #endif // Graph_h
