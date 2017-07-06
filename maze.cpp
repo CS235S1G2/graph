@@ -16,6 +16,7 @@
 #include "vertex.h"
 #include "set.h"
 #include "graph.h"
+#include "vector.h"
 using namespace std;
 
 void drawMazeRow(const Graph & g, int row, Set <CVertex> & s);
@@ -28,7 +29,25 @@ void drawMazeColumn(const Graph & g, int row, const Set <CVertex> & s);
  *****************************************/
 void solveMaze()
 {
-   // your code here
+   string fileName;
+   Vector <Vertex> path;
+   
+   // get fileName
+   cout << "What is the filename? ";
+   cin >> fileName;
+   
+   // readMaze
+   Graph maze = readMaze(fileName.c_str());
+   
+   // drawMaze
+   drawMaze(maze, path);
+   
+   // user input
+   cout << "Press any key to solve the maze.\n";
+   cin.ignore();
+   cin.get();
+   
+   
 }
 
 /************************************************
@@ -45,7 +64,7 @@ void drawMaze(const Graph & g, const Vector <Vertex> & path)
    // copy everything into a set
    Set <CVertex> s;
    for (int i = 0; i < path.size(); i++)
-      s.insert((CVertex)path(i));
+      s.insert((CVertex)path[i]);
 
    // draw the top border
    cout << "+  ";

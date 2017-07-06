@@ -1,80 +1,65 @@
+
+
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include <vector>
-#include <list>
-#include <set>
 #include "vertex.h"
-#include "pair.h"
+#include "list.h"
+#include "set.h"
+#include "vector.h"
 
-class VertexInfo;
 class Graph
 {
-public:
-	// constructors, destructors, assignment
-	// No default constructor
-	Graph(int numVertices) throw (const char *) :numVertices(0)
-	{
-		this->numVertices = numVertices;
-		if (numVertices <= 0)
-			return;
-		else
-		{
-			try
-			{
-				v = new vector<VertexInfo>(numVertices);
-			}
-			catch (std::bad_alloc)
-			{
-				throw "ERROR: Unable to allocate memory for the graph.";
-			}
-		}
-	
-	}
-	Graph(const Graph & rhs) throw (const char *)
-	{
-		this->numVertices = rhs.numVertices;
-		try
-		{
-			this->v = rhs.v;
-		}
-		catch (std::bad_alloc)
-		{
-			throw "ERROR: Unable to allocate memory for the graph.";
-		}
-	}
-
-	~Graph()
-	{
-		numVertices = 0;
-	}
-
-	Graph & operator = (const Graph & rhs)
-	{
-		this->numVertices = rhs.numVertices;
-		this->v = rhs.v;
-		return *this;
-	}
-
-	// std container interfaces
-	int size() { return numVertices; }
-	void clear() { numVertices = 0; }
-
-	// map specific interfaces
-	bool isEdge() {}
-	Pair<Vertex,Vertex> findEdges(Vertex & vertex) {}
-	std::vector<Vertex> findPath(Vertex & start, Vertex & end) {} // returns the shortest path between "start" and "end"
-	void add(Vertex & one, Vertex & two) {} // two vertices representing new edge
-	void add(Vertex & one, std::set<Vertex> & two) {} // two vertices and a set of vertices
-	
-private:
-	int numVertices;
-	class VertexInfo //stores the vertex name and the adjacent vertices
-	{
-	public:
-		Vertex data;
-		std::list <int> adjacencyList;
-	};
-	std::vector <VertexInfo> * v;
+   public:
+      Graph(int numVertices) throw (const char *)
+      {
+         this->numVertices = numVertices;
+         int size = numVertices * numVertices;
+         // try
+         try
+         {  
+            adjMatrix = new bool[size];
+            
+            // initialize to false
+            for (int i = 0; i < size; i++)
+               adjMatrix[i] = false;
+         }
+         catch(std::bad_alloc)
+         {
+            throw "ERROR: Unable to allocate memory for the graph";
+         }
+      }
+      
+      Graph(const Graph & rhs) throw (const char *);
+      ~Graph()
+      {
+         clear();
+      }
+      Graph & operator = (const Graph & rhs) throw (const char *);
+      
+      int size() const { return numVertices; }
+      void clear()
+      {
+         delete [] adjMatrix;
+         adjMatrix = NULL;
+         numVertices = 0;   
+      }
+      
+      void add(const Vertex & v1, const Vertex & v2);
+      void add(const Vertex & v1, const Set <Vertex> & set);
+      
+      bool isEdge(const Vertex & v1, const Vertex & v2) const;
+      
+      Set <Vertex> findEdges(const Vertex & v1) const;
+      
+      Vector <Vertex> findPath(const Vertex & v1, const Vertex & v2) const;
+   
+   private:
+      bool * adjMatrix;
+      Set <Vertex> data;
+      int numVertices;
+   
 };
-#endif // Graph_h
+
+
+#endif // GRAPH_H
