@@ -22,7 +22,7 @@ public:
 		{
 			try
 			{
-				v = new vector<VertexInfo>(numVertices);
+				v = new vector<VertexInfo>[numVertices];
 			}
 			catch (std::bad_alloc)
 			{
@@ -64,7 +64,11 @@ public:
 	bool isEdge() {}
 	Pair<Vertex,Vertex> findEdges(Vertex & vertex) {}
 	std::vector<Vertex> findPath(Vertex & start, Vertex & end) {} // returns the shortest path between "start" and "end"
-	void add(Vertex & one, Vertex & two) {} // two vertices representing new edge
+	void add(Vertex & one, Vertex & two) 
+	{
+		if (v != NULL)
+			v[one]->insert(two);
+	} // two vertices representing new edge
 	void add(Vertex & one, std::set<Vertex> & two) {} // two vertices and a set of vertices
 	
 private:
