@@ -47,7 +47,9 @@ void solveMaze()
    cin.ignore();
    cin.get();
    
+   path = maze.findPath(maze.begin(), maze.end());
    
+   drawMaze(maze, path);
 }
 
 /************************************************
