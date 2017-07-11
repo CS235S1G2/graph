@@ -80,5 +80,7 @@ Set <Vertex> Graph :: findEdges(const Vertex & v1) const
 
 Vector <Vertex> Graph :: findPath(const Vertex & v1, const Vertex & v2) const
 {
+   Vector <Vertex> shortestDist;
+   VectorIterator <Vertex> it;
    
 }
