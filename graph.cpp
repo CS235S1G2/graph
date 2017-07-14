@@ -21,6 +21,9 @@ Graph :: Graph(const Graph & rhs) throw (const char *)
 
 Graph & Graph :: operator = (const Graph & rhs) throw (const char *)
 {
+	// if nothing, rhs is invalid
+	if (rhs.numVertices == 0)
+		return *this;
    numVertices = rhs.numVertices;
    int size = numVertices * numVertices;
    data = rhs.data;
