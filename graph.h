@@ -48,8 +48,9 @@ class Graph
       }
 
 	  Vertex begin() { return *(data.begin()); }
-	  Vertex end() { return *(data.end());
-	  cout << *data.end();
+	  Vertex end() {
+		  cout << *data.end();
+		  return *(data.end());
 	  }
 
       void add(const Vertex & v1, const Vertex & v2);
