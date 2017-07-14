@@ -7,6 +7,8 @@
 #include "list.h"
 #include "set.h"
 #include "vector.h"
+#include <iostream>
+using namespace std;
 
 class Graph
 {
@@ -46,7 +48,9 @@ class Graph
       }
 
 	  Vertex begin() { return *(data.begin()); }
-	  Vertex end()   { return *(data.end());   }
+	  Vertex end() { return *(data.end());
+	  cout << *data.end();
+	  }
 
       void add(const Vertex & v1, const Vertex & v2);
       void add(const Vertex & v1, const Set <Vertex> & set);
