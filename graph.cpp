@@ -170,6 +170,6 @@ Vector <Vertex> Graph :: findPath(const Vertex & vFrom, const Vertex & vTo) cons
 	delete[] distances;
 
 	delete[] predecessor;
-
+	cerr << "PATHsize:" << path.size();
 	return path;
 }
