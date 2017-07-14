@@ -49,13 +49,10 @@ class Graph
 
 	  Vertex begin() { 
 		  SetIterator<Vertex>it = data.begin();
-		  cout << "BEGIN" << (*it);
 		  return (*it); }
 	  Vertex end() {
 		  SetIterator<Vertex>it = data.end();
-		  cout << "END" << (*it);
-		  return (*it);
-	  }
+		  return (*it);  }
 
       void add(const Vertex & v1, const Vertex & v2);
       void add(const Vertex & v1, const Set <Vertex> & set);
@@ -64,7 +61,7 @@ class Graph
       
       Set <Vertex> findEdges(const Vertex & v1) const;
       
-      Vector <Vertex> findPath(const Vertex & v1, const Vertex & v2) const;
+      Vector <Vertex> findPath(const Vertex & vFrom, const Vertex & vTo) const;
    
    private:
       bool * adjMatrix;

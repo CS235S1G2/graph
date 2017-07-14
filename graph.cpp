@@ -83,11 +83,10 @@ Set <Vertex> Graph :: findEdges(const Vertex & v1) const
    return rSet;
 }
 
-Vector <Vertex> Graph :: findPath(const Vertex & v1, const Vertex & v2) const
+Vector <Vertex> Graph :: findPath(const Vertex & vFrom, const Vertex & vTo) const
 {
 	// create an array representing the shortest path to each item. Mark
 	// the distance to vFrom as zero
-
 	int distance = 0;
 
 	int * distances = new int[numVertices];
@@ -98,19 +97,19 @@ Vector <Vertex> Graph :: findPath(const Vertex & v1, const Vertex & v2) const
 
 		distances[i] = -1;
 
-	distances[v1.index()] = distance;
+	distances[vFrom.index()] = distance;
 
 	// create a queue of the ones to visit. Start with vFrom
 
 	Queue <Vertex> toVisit;
 
-	toVisit.push(v1);
+	toVisit.push(vFrom);
 
 	// while we have not found the destination and the list of places
 
 	// we still have to go is not empty
 
-	while (!toVisit.empty() && distances[v2.index()] == -1)
+	while (!toVisit.empty() && distances[vTo.index()] == -1)
 
 	{
 
@@ -152,7 +151,7 @@ Vector <Vertex> Graph :: findPath(const Vertex & v1, const Vertex & v2) const
 
 	Vector <Vertex> path(distance + 1);
 
-	if (distances[v2.index()] == -1)
+	if (distances[vTo.index()] == -1)
 
 	{
 
@@ -162,7 +161,7 @@ Vector <Vertex> Graph :: findPath(const Vertex & v1, const Vertex & v2) const
 
 	}
 
-	path.push_back(v2);
+	path.push_back(vTo);
 
 	for (int i = 1; i <= distance; i++)
 
@@ -173,5 +172,4 @@ Vector <Vertex> Graph :: findPath(const Vertex & v1, const Vertex & v2) const
 	delete[] predecessor;
 
 	return path;
-
 }
