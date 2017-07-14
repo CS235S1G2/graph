@@ -49,6 +49,7 @@ class Graph
 
 	  Vertex begin() { 
 		  SetIterator<Vertex>it = data.begin();
+		  cerr << "dataSIZE:" << data.size();
 		  return (*it); }
 	  Vertex end() {
 		  SetIterator<Vertex>it = data.end();
