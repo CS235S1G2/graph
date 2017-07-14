@@ -134,13 +134,9 @@ Vector <Vertex> Graph :: findPath(const Vertex & vFrom, const Vertex & vTo) cons
 			if (distances[(*it).index()] == -1)
 
 			{
-
 				distances[(*it).index()] = distance + 1;
-
 				predecessor[(*it).index()] = v;
-
 				toVisit.push((*it));
-
 			}
 
 	}
@@ -154,11 +150,8 @@ Vector <Vertex> Graph :: findPath(const Vertex & vFrom, const Vertex & vTo) cons
 	if (distances[vTo.index()] == -1)
 
 	{
-
 		cout << "No path found\n";
-
 		return path;
-
 	}
 
 	path.push_back(vTo);
@@ -168,8 +161,6 @@ Vector <Vertex> Graph :: findPath(const Vertex & vFrom, const Vertex & vTo) cons
 		path.push_back(predecessor[path[i - 1].index()]);
 
 	delete[] distances;
-
 	delete[] predecessor;
-	cerr << "PATHsize:" << path.size();
 	return path;
 }

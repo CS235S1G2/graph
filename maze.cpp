@@ -68,7 +68,6 @@ void drawMaze(const Graph & g, const Vector <Vertex> & path)
    for (int i = 0; i < path.size(); i++)
    {
 	   s.insert((CVertex)path[i]);
-	   cout << i << ":HERE";
    }
    // draw the top border
    cout << "+  ";
@@ -132,7 +131,6 @@ Graph readMaze(const char * fileName)
 void drawMazeRow(const Graph & g, int row, Set <CVertex> & s)
 {
    const char * space = NULL;
-   cout << "size Set:" << s.size();
    CVertex vFrom;
    CVertex vTo;
    assert(g.size() == vFrom.getMaxCol() * vFrom.getMaxRow());
