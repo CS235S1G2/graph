@@ -47,10 +47,14 @@ class Graph
          numVertices = 0;   
       }
 
-	  Vertex begin() { return *(data.begin()); }
+	  Vertex begin() { 
+		  SetIterator<Vertex>it = data.begin();
+		  cout << "BEGIN" << (*it);
+		  return (*it); }
 	  Vertex end() {
-		  cout << *data.end();
-		  return *(data.end());
+		  SetIterator<Vertex>it = data.end();
+		  cout << "END" << (*it);
+		  return (*it);
 	  }
 
       void add(const Vertex & v1, const Vertex & v2);
