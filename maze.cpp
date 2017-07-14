@@ -66,8 +66,10 @@ void drawMaze(const Graph & g, const Vector <Vertex> & path)
    // copy everything into a set
    Set <CVertex> s;
    for (int i = 0; i < path.size(); i++)
-      s.insert((CVertex)path[i]);
-
+   {
+	   s.insert((CVertex)path[i]);
+	   cout << i << ":HERE";
+   }
    // draw the top border
    cout << "+  ";
    for (int c = 1; c < v.getMaxCol(); c++)
