@@ -48,10 +48,10 @@ class Graph
       }
 
 	  Vertex begin() { 
-		  SetIterator<Vertex>it = data.begin();
+		  SetConstIterator<Vertex>it = data.cbegin();
 		  return (*it); }
 	  Vertex end() {
-		  SetIterator<Vertex>it = data.end();
+		  SetConstIterator<Vertex>it = data.cend();
 		  return (*it);  }
 
       void add(const Vertex & v1, const Vertex & v2);
