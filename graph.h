@@ -44,7 +44,10 @@ class Graph
          adjMatrix = NULL;
          numVertices = 0;   
       }
-      
+
+	  Vertex begin() { return *data.begin(); }
+	  Vertex end()   { return *data.end();   }
+
       void add(const Vertex & v1, const Vertex & v2);
       void add(const Vertex & v1, const Set <Vertex> & set);
       

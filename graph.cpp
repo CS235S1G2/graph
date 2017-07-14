@@ -83,7 +83,6 @@ Set <Vertex> Graph :: findEdges(const Vertex & v1) const
 Vector <Vertex> Graph :: findPath(const Vertex & v1, const Vertex & v2) const
 {
 	// create an array representing the shortest path to each item. Mark
-
 	// the distance to vFrom as zero
 
 	int distance = 0;
