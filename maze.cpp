@@ -47,7 +47,7 @@ void solveMaze()
    cin.ignore();
    cin.get();
    
-   path = maze.findPath(maze.end(), maze.begin());
+   path = maze.findPath(maze.begin(), maze.end());
    cout << path.size();
    drawMaze(maze, path);
 }

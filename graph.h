@@ -7,6 +7,7 @@
 #include "list.h"
 #include "set.h"
 #include "vector.h"
+#include <algorithm>
 #include <iostream>
 using namespace std;
 
@@ -48,9 +49,11 @@ class Graph
       }
 
 	  Vertex begin() { 
+		  sort(data.begin(), data.end());
 		  SetConstIterator<Vertex>it = data.cbegin();
 		  return (*it); }
 	  Vertex end() {
+		  sort(data.begin(), data.end());
 		  Set<Vertex>a;
 		  a=findEdges(begin());
 		  cout << "ERROR " << a.size();
