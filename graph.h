@@ -7,7 +7,6 @@
 #include "list.h"
 #include "set.h"
 #include "vector.h"
-#include <algorithm>
 #include <iostream>
 using namespace std;
 
@@ -49,16 +48,27 @@ class Graph
       }
 
 	  Vertex begin() { 
-		  sort(data.begin(), data.end());
+		  Vertex begin;
 		  SetConstIterator<Vertex>it = data.cbegin();
-		  return (*it); }
+		  begin = (*it);
+		  while (it != data.cend())
+		  {
+			  if ((*it) < begin)
+				  begin = (*it);
+			  it++;
+		  }
+		  return begin; }
 	  Vertex end() {
-		  sort(data.begin(), data.end());
-		  Set<Vertex>a;
-		  a=findEdges(begin());
-		  cout << "ERROR " << a.size();
-		  SetIterator<Vertex>it = data.end();
-		  return (*it); }
+		  Vertex end;
+		  SetConstIterator<Vertex>it = data.cbegin();
+		  end = (*it);
+		  while (it != data.cend())
+		  {
+			  if ((*it) > end)
+				  end = (*it);
+			  it++;
+		  }
+		  return end; }
 
       void add(const Vertex & v1, const Vertex & v2);
       void add(const Vertex & v1, const Set <Vertex> & set);
