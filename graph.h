@@ -51,7 +51,12 @@ class Graph
 		  SetConstIterator<Vertex>it = data.cbegin();
 		  return (*it); }
 	  Vertex end() {
-		  SetConstIterator<Vertex>it = data.cend();
+		  SetConstIterator<Vertex>it = data.cbegin();
+		  int i = 0;
+		  for (int i = 0; i < numVertices; i++)
+		  {
+			  it++;
+		  }
 		  return (*it);  }
 
       void add(const Vertex & v1, const Vertex & v2);
