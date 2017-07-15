@@ -50,9 +50,11 @@ class Graph
 	  Vertex begin() { 
 		  SetConstIterator<Vertex>it = data.cbegin();
 		  return (*it); }
-	  Vertex end() { 
-		  CVertex end(numVertices, numVertices);
-			  return end;
+	  Vertex end() {
+		  Set<Vertex>a;
+		  a=findEdges(begin());
+		  SetIterator<Vertex>it = data.end();
+		  return (*it);
 	  }
 
       void add(const Vertex & v1, const Vertex & v2);
