@@ -54,7 +54,7 @@ class Graph
 		  Set<Vertex>a;
 		  a=findEdges(begin());
 		  cout << "ERROR " << a.size();
-		  SetIterator<Vertex>it = a.end();
+		  SetIterator<Vertex>it = data.end();
 		  return (*it); }
 
       void add(const Vertex & v1, const Vertex & v2);
